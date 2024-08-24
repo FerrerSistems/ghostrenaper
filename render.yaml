@@ -1,11 +1,15 @@
 services:
   - type: web
     name: renaperghost
-    env: python
+    env: python  
     plan: free
-    buildCommand: "pip install -r requirements.txt"
-    startCommand: "python Request.py"
+    buildCommand: "pip install -r requirements.txt"  
+    startCommand: "python Request.py"  
     envVars:
       - key: CERT_PASSWORD
-        value: sape  # Your certificate password
+        value: sape  
+    build:
+      commands:
+        - cp cert.pfx /etc/secrets/cert.pfx  
+
 
